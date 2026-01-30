@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java電卓ポートフォリオ</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 5px 15px; }
+        .project-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #f9f9f9; }
+        .code-link { display: inline-block; background: #24292e; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; cursor: pointer; border: none; }
+        .code-link:hover { background: #444; }
+        img { max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 10px; }
+        
+        /* 簡易デモ用のスタイル */
+        .demo-area { background: #eee; padding: 15px; border-radius: 5px; margin-top: 20px; }
+        input { padding: 8px; width: 60px; }
+    </style>
+</head>
+<body>
+    <h1>My Portfolio</h1>
+
+    <div class="project-card">
+        <h2>Javaで作った多機能電卓</h2>
+        <p>このプロジェクトでは、Javaを使用してデスクトップで動作する電卓を作成しました。</p>
+        
+        <h3>1. 実行画面</h3>
+        <p>※以下にプログラムの実行画面を載せます</p>
+        <img src="C:\Java\app\Calcuator.png" alt="電卓の実行画面">
+
+        <h3>2. こだわったポイント</h3>
+        <ul>
+            <li>四則演算の優先順位を考慮したロジック</li>
+            <li>例外処理（0での割り算など）の修正</li>
+        </ul>
+
+        <h3>3. 動作デモ (JavaScript連携)</h3>
+        <div class="demo-area">
+            <p>JavaのロジックをJSで再現した簡易計算機です：</p>
+            <input type="number" id="num1" placeholder="値1"> + 
+            <input type="number" id="num2" placeholder="値2">
+            <button id="calc-btn" class="code-link calc-button-custom">計算実行</button>
+            <p>結果: <strong><span id="result">0</span></strong></p>
+        </div>
+
+        <h3>4. ソースコード</h3>
+        <p>プログラムの全容は以下のリンクから確認できます。</p>
+        <a href="Calculator.java" class="code-link" id="view-code-btn">Javaソースコードを見る</a>
+    </div>
+
+    <script>
+        // 1. 計算ボタンの動作連携
+        const calcBtn = document.getElementById('calc-btn');
+        calcBtn.addEventListener('click', function() {
+            const v1 = parseFloat(document.getElementById('num1').value) || 0;
+            const v2 = parseFloat(document.getElementById('num2').value) || 0;
+            const sum = v1 + v2;
+            
+            document.getElementById('result').textContent = sum;
+            alert('計算が完了しました！結果は ' + sum + ' です。');
+        });
+
+        // 2. ソースコードボタンのクリックイベント（おまけ）
+        const codeBtn = document.getElementById('view-code-btn');
+        codeBtn.addEventListener('click', function() {
+            console.log('ソースコードがリクエストされました。');
+        });
+    </script>
+</body>
+</html>
